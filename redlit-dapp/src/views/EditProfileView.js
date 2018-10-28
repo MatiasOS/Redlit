@@ -11,12 +11,15 @@ const EditProfileView = (props) => (
         <img src={testImage} height="400px" width="auto"/>
         <h2> {props.name} </h2>
         <p> {props.description} </p>
+        <p> {props.contact} </p>
         <p>Edit Image: </p>
         <input label='upload new Picture' type='file' onChange={(event) => props.handleFileUpload(event)} />
         <p>Edit Name: </p>
         <TextBox className="edit-description-text" placeholder={props.name} onChange={(event) => props.editName(event)} />
         <p>Edit Description: </p>
         <TextBox className="edit-description-text" placeholder={props.description} onChange={(event) => props.editDescription(event)} />
+        <p>Edit Contact: </p>
+        <TextBox className="edit-description-text" placeholder={props.contact} onChange={(event) => props.editContact(event)} />
         <button type='submit' className="btn fullwidth cancel-btn">Save Edits</button>
       </form>
       <div className="text-center">
@@ -36,8 +39,10 @@ EditProfileView.propTypes = {
   identity: PropTypes.string,
   description: PropTypes.string,
   name: PropTypes.string,
+  contact: PropTypes.string,
   editDescription: PropTypes.func,
-  editName: PropTypes.func
+  editName: PropTypes.func,
+  editContact: PropTypes.func
 };
 
 export default EditProfileView;

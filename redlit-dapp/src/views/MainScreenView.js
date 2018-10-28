@@ -85,6 +85,9 @@ class MainScreenView extends Component {
           <div className="row text-center">
             <div className="col-12 text-left profile-description">{this.props.description}</div>
           </div>
+          <div className="row text-center">
+            <div className="col-12 text-left profile-description">{this.props.contact}</div>
+          </div>
           <div className="row">
             <div className="col-6 text-center">
               <button onClick={this.props.rejectProfile}>
@@ -130,7 +133,8 @@ MainScreenView.propTypes = {
   rejectProfile: PropTypes.func,
   name: PropTypes.string,
   image: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
+  contact: PropTypes.string
 };
 
 export default MainScreenView;

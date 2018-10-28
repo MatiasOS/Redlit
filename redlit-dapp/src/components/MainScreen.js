@@ -25,9 +25,10 @@ class MainScreen extends Component {
       profile.name = ensName;
       profile.description = 'No description given';
       profile.image = 'default';
+      profile.contact = 'No contact';
     }
     this.setState({ address: profiles[rand], ensName: ensName, profile: profile })
-    
+
   }
 
   setView(view) {
@@ -59,7 +60,7 @@ class MainScreen extends Component {
   async update() {
     // const {tokenService} = await this.props.services;
     // const {identityService} = this.props.services;
-    // const {address} = identityService.identity; 
+    // const {address} = identityService.identity;
     // setTimeout(this.update.bind(this), 1000);
   }
 
@@ -67,7 +68,7 @@ class MainScreen extends Component {
     return (
       <div>
         <RequestsBadge setView={this.setView.bind(this)} services={this.props.services}/>
-        <MainScreenView name={this.state.profile.name} image={this.state.profile.image} description={this.state.profile.description} rejectProfile={this.rejectProfile.bind(this)} goToRelations={this.goToRelations.bind(this)} goToProfile={this.goToProfile.bind(this)} events={this.state.events} />
+        <MainScreenView name={this.state.profile.name} image={this.state.profile.image} description={this.state.profile.description} contact={this.state.profile.contact} rejectProfile={this.rejectProfile.bind(this)} goToRelations={this.goToRelations.bind(this)} goToProfile={this.goToProfile.bind(this)} events={this.state.events} />
       </div>
       )
   }

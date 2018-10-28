@@ -53,12 +53,13 @@ class LitTokenService {
     await this.identityService.execute(message);
   }
 
-  async editProfile(name, description, file) {
+  async editProfile(name, description, file, contact) {
     console.log("editing")
     const userProfile = {};
     userProfile.image = await image2base64(file);;
     userProfile.description = description;
     userProfile.name = name;
+    userProfile.contact= contact;
     const buffer = new Buffer(JSON.stringify(userProfile));
     await ipfs.add(buffer, async (err, profileHash) => {
       if (err) return console.log(err);

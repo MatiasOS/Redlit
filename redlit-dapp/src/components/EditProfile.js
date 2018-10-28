@@ -10,7 +10,8 @@ class EditProfile extends Component {
     this.state = {
       file: [], 
       description: '',
-      name: '' 
+      name: '' ,
+      contact: ''
     };
   }
 
@@ -21,6 +22,11 @@ class EditProfile extends Component {
   handleFileUpload(event) {
     event.preventDefault();
     this.setState({file: URL.createObjectURL(event.target.files[0])});
+  }
+
+  editContact(event) {
+    const contact = event.target.value;
+    this.setState({contact: contact});
   }
 
   editDescription(event) {
@@ -35,12 +41,11 @@ class EditProfile extends Component {
 
   async submitEdits(event) {
     event.preventDefault();
-    await this.litTokenService.editProfile(this.state.name, this.state.description, this.state.file);
+    await this.litTokenService.editProfile(this.state.name, this.state.description, this.state.file, this.state.contact);
     this.emitter.emit('setView', 'MainScreen');
   }
 
   render() {
-    const {file} = this.state;
     return (
       <div>
         <EditProfileView 
@@ -50,8 +55,10 @@ class EditProfile extends Component {
           identity={this.identityService.identity.name}
           editDescription={this.editDescription.bind(this)}
           editName={this.editName.bind(this)}
+          editContact={this.editContact.bind(this)}
           description="Howdy Do Test Description!"
           name="Francisco Testname"
+          contact="@ig.ok"
         />
 
       </div>
